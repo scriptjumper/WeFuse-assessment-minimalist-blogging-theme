@@ -1,41 +1,27 @@
 import React from 'react'
 
-function ArticleList() {
-  return (
-    <div className="articles">
-      <section>
+const ArticleList = (props) => {
+  let articles = props.articles.map((article, idx) => {
+    return (
+      <section key={idx}>
         <div>
-          <h6>TECH</h6>
-          <h1>THIS IS A TEST ARTICLE</h1>
+          <h6>{article.category}</h6>
+          <h1>{article.title}</h1>
 
-          <div class="blog_details">
+          <div className="blog_details">
             <span>
-              <i class="far fa-clock"></i> March 24, 2020
+              <i className="far fa-clock"></i> {article.date}
             </span>
             <span>
-              <i class="fas fa-user"></i> Admin
+              <i className="fas fa-user"></i> {article.author}
             </span>
           </div>
         </div>
       </section>
+    )
+  })
 
-      <section>
-        <div>
-          <h6>TECH</h6>
-          <h1>THIS IS A TEST ARTICLE 2</h1>
-
-          <div class="blog_details">
-            <span>
-              <i class="far fa-clock"></i> March 24, 2020
-            </span>
-            <span>
-              <i class="fas fa-user"></i> Admin
-            </span>
-          </div>
-        </div>
-      </section>
-    </div>
-  )
+  return <div className="articles">{articles}</div>
 }
 
 export default ArticleList
