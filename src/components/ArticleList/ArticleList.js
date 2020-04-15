@@ -1,9 +1,16 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const ArticleList = (props) => {
   let articles = props.articles.map((article, idx) => {
     return (
-      <section key={idx}>
+      <Link
+        to={`/article/${article.title}`}
+        className="section"
+        key={idx}
+        onClick={() => {
+          props.handleArticleClicked(article.title)
+        }}>
         <div>
           <h6>{article.category}</h6>
           <h1>{article.title}</h1>
@@ -17,7 +24,7 @@ const ArticleList = (props) => {
             </span>
           </div>
         </div>
-      </section>
+      </Link>
     )
   })
 

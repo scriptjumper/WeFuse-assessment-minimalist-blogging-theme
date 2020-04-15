@@ -22,7 +22,7 @@ li a:hover {
   background-color: #111;
 }
 
-.articles section {
+.articles .section {
   display: block;
   background: #a9a9a9;
   text-align: center;
