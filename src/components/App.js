@@ -11,8 +11,11 @@ class App extends React.Component {
     super()
 
     this.state = {
-      articles: []
+      articles: [],
+      article: {}
     }
+
+    this.handleArticleClicked = this.handleArticleClicked.bind(this)
   }
 
   componentDidMount() {
@@ -21,22 +24,42 @@ class App extends React.Component {
         category: 'Tech',
         title: 'article 1',
         date: '2020/24/03',
-        author: 'admin'
+        author: 'admin',
+        pageData:
+          '<h1>Article 1</h1><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia provident nesciunt pariatur, ipsa repellendus est numquam maiores reiciendis deserunt doloremque. Similique optio tempora dolorem alias sed consequatur dolores ab nemo!</p>'
       },
       {
         category: 'Accounting',
         title: 'article 2',
         date: '2015/12/11',
-        author: 'unknown'
+        author: 'unknown',
+        pageData:
+          '<h1>Article 2</h1><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia provident nesciunt pariatur, ipsa repellendus est numquam maiores reiciendis deserunt doloremque. Similique optio tempora dolorem alias sed consequatur dolores ab nemo!</p>'
       },
       {
         category: 'Farming',
         title: 'article 3',
         date: '2015/12/11',
-        author: 'unknown'
+        author: 'unknown',
+        pageData:
+          '<h1>Article 3</h1><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia provident nesciunt pariatur, ipsa repellendus est numquam maiores reiciendis deserunt doloremque. Similique optio tempora dolorem alias sed consequatur dolores ab nemo!</p>'
       }
     ]
     this.setState({ articles })
+  }
+
+  handleArticleClicked(slug) {
+    let articles = this.state.articles,
+      articleObj = {}
+
+    for (let i = 0; i < articles.length; i++) {
+      if (articles[i].title === slug) {
+        articleObj = articles[i]
+        break
+      }
+    }
+
+    this.setState({ article: articleObj })
   }
 
   render() {
@@ -44,8 +67,8 @@ class App extends React.Component {
       <Router>
         <Header></Header>
 
-        <Route exact path="/" render={() => <ArticleList articles={this.state.articles} />} />
-        <Route exact path="/article" component={ArticleDetails}></Route>
+        <Route exact path="/" render={() => <ArticleList articles={this.state.articles} handleArticleClicked={this.handleArticleClicked} />} />
+        <Route exact path="/article/:slug" render={() => <ArticleDetails article={this.state.article} />} />
       </Router>
     )
   }
