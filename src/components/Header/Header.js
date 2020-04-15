@@ -8,9 +8,6 @@ function Header() {
         <li>
           <Link to="/">Blogs</Link>
         </li>
-        <li>
-          <Link to="/article">Article</Link>
-        </li>
       </ul>
     </div>
   )
