@@ -44,7 +44,7 @@ class App extends React.Component {
       <Router>
         <Header></Header>
 
-        <Route exact path="/" render={(props) => <ArticleList articles={this.state.articles} />} />
+        <Route exact path="/" render={() => <ArticleList articles={this.state.articles} />} />
         <Route exact path="/article" component={ArticleDetails}></Route>
       </Router>
     )
