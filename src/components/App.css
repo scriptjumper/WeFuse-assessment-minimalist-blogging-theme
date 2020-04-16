@@ -312,6 +312,14 @@ body::-webkit-scrollbar-thumb {
   display: inline-block;
 }
 
+/* loading */
+.loading {
+  text-align: center;
+  padding: 10em;
+  font-size: 2em;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 /* 48em = 768px */
 
 @media (min-width: 48em) {
@@ -385,10 +393,18 @@ body::-webkit-scrollbar-thumb {
   .contacting .social_media {
     padding: 1em 0;
   }
+
+  .loading {
+    padding: 5em 0em;
+  }
 }
 
 @media (max-width: 360px) {
   .header {
-    height: 55vh;
+    height: 65vh;
+  }
+
+  .header_content {
+    padding: 5em 0;
   }
 }
