@@ -177,10 +177,10 @@ a {
   background-size: cover;
 }
 
-.blog_list section div {
-  width: 60%;
+.blog_list section .blog_article {
   text-align: center;
   margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .blog_list h6 {

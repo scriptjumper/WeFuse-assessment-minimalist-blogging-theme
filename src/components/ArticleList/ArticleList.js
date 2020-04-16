@@ -14,7 +14,7 @@ const ArticleList = (props) => {
           style={{
             backgroundImage: `url(${article.banner.image.url})`
           }}>
-          <div>
+          <div className="blog_article">
             <h6>{article.category}</h6>
             <h1>{article.banner.title}</h1>
 
