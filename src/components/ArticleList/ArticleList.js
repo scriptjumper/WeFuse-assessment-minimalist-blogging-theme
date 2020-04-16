@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Utils from '../Utils/Utils'
 
 const ArticleList = (props) => {
   let articles = props.articles.map((article, idx) => {
@@ -20,7 +21,7 @@ const ArticleList = (props) => {
 
             <div className="blog_details">
               <span>
-                <i className="far fa-clock"></i> {article.postDate.date}
+                <i className="far fa-clock"></i> {Utils.dateFormatter(article.postDate.date)}
               </span>
               <span>
                 <i className="fas fa-user"></i> {article.author}

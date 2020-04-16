@@ -1,11 +1,12 @@
 import React from 'react'
+import Utils from '../Utils/Utils'
 
 const ArticleDetails = (props) => {
   let article = props.article,
     blogDate = ''
 
   if (article.postDate !== undefined) {
-    blogDate = article.postDate.date
+    blogDate = Utils.dateFormatter(article.postDate.date)
   }
 
   return (
