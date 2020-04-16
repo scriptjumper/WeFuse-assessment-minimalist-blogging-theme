@@ -6,29 +6,33 @@ const ArticleList = (props) => {
     return (
       <Link
         to={`/article/${article.slug}`}
-        className="section"
         key={idx}
         onClick={() => {
           props.handleArticleClicked(article.slug)
         }}>
-        <div>
-          <h6>{article.category}</h6>
-          <h1>{article.banner.title}</h1>
+        <section
+          style={{
+            backgroundImage: `url(${article.banner.image.url})`
+          }}>
+          <div>
+            <h6>{article.category}</h6>
+            <h1>{article.banner.title}</h1>
 
-          <div className="blog_details">
-            <span>
-              <i className="far fa-clock"></i> {article.postDate.date}
-            </span>
-            <span>
-              <i className="fas fa-user"></i> {article.author}
-            </span>
+            <div className="blog_details">
+              <span>
+                <i className="far fa-clock"></i> {article.postDate.date}
+              </span>
+              <span>
+                <i className="fas fa-user"></i> {article.author}
+              </span>
+            </div>
           </div>
-        </div>
+        </section>
       </Link>
     )
   })
 
-  return <div className="articles">{articles}</div>
+  return <div className="blog_list">{articles}</div>
 }
 
 export default ArticleList
