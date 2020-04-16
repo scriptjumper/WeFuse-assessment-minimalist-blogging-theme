@@ -5,19 +5,19 @@ const ArticleList = (props) => {
   let articles = props.articles.map((article, idx) => {
     return (
       <Link
-        to={`/article/${article.title}`}
+        to={`/article/${article.slug}`}
         className="section"
         key={idx}
         onClick={() => {
-          props.handleArticleClicked(article.title)
+          props.handleArticleClicked(article.slug)
         }}>
         <div>
           <h6>{article.category}</h6>
-          <h1>{article.title}</h1>
+          <h1>{article.banner.title}</h1>
 
           <div className="blog_details">
             <span>
-              <i className="far fa-clock"></i> {article.date}
+              <i className="far fa-clock"></i> {article.postDate.date}
             </span>
             <span>
               <i className="fas fa-user"></i> {article.author}
