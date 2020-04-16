@@ -21,7 +21,15 @@ class App extends React.Component {
   }
 
   handleArticleClicked(slug) {
-    //
+    try {
+      axios.get(`${process.env.REACT_APP_API_URL}/blog/${slug}`).then((res) => {
+        let article = res.data.data[0]
+        this.setState({ article })
+      })
+    } catch (e) {
+      console.log(`Axios request failed: ${e}`)
+      this.setState({ article: {} })
+    }
   }
 
   componentDidMount() {

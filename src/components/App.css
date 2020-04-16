@@ -205,6 +205,68 @@ a {
   padding: 1.5em;
 }
 
+/* Article */
+.blog .information,
+.blog .details {
+  color: #000000;
+}
+
+.blog .information {
+  border: 1px solid gray;
+  margin-bottom: 10px;
+}
+
+.blog .information div {
+  display: inline-block;
+  width: 45%;
+  text-align: center;
+  padding: 1em;
+}
+
+.blog .information i {
+  color: #ff0000;
+}
+
+.blog .details {
+  padding: 5em 25em;
+}
+
+.blog .details p {
+  line-height: 3em;
+}
+
+/* setting other element styles  */
+.blog .details ul {
+  list-style: circle;
+}
+
+.blog .details h2 {
+  font-weight: 200;
+  font-size: 2em;
+}
+
+.blog .details h3 {
+  font-weight: 200;
+  font-size: 1.5em;
+}
+
+.blog .details strong {
+  font-weight: bold;
+}
+
+.blog .details pre {
+  font-style: italic;
+}
+
+.blog .details ol {
+  list-style: decimal;
+}
+
+.blog .details ol,
+.blog .details ul {
+  padding: 1.5em;
+}
+
 /* footer */
 .footer {
   background-color: #232228;
