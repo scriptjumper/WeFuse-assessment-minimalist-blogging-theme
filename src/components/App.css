@@ -1,5 +1,5 @@
 body {
-  background-color: #f4f4f4;
+  background-color: #232228;
   color: #f5f5f5;
 }
 
@@ -12,7 +12,7 @@ a {
 .header {
   background-color: #232228;
   box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
-  height: 50vh;
+  height: 40vh;
   width: 100%;
   z-index: 3;
 }
@@ -144,28 +144,8 @@ a {
   top: 0;
 }
 
-/* 48em = 768px */
-
-@media (min-width: 48em) {
-  .header li {
-    float: left;
-  }
-  .header li a {
-    padding: 20px 30px;
-  }
-  .header .menu {
-    clear: none;
-    float: right;
-    max-height: none;
-  }
-  .header .menu-icon {
-    display: none;
-  }
-}
-
 /* Articles */
 .blog_list {
-  background-color: #000000;
   width: 100%;
 }
 
@@ -180,7 +160,7 @@ a {
 .blog_list section .blog_article {
   text-align: center;
   margin: 0 auto;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .blog_list h6 {
@@ -209,11 +189,11 @@ a {
 .blog .information,
 .blog .details {
   color: #000000;
+  background-color: #f4f4f4;
 }
 
 .blog .information {
   border: 1px solid gray;
-  margin-bottom: 10px;
 }
 
 .blog .information div {
@@ -278,7 +258,6 @@ a {
 }
 
 .contacting {
-  /* border-top: 1px solid #f5f5f5; */
   padding-top: 5em;
   text-align: center;
 }
@@ -318,4 +297,80 @@ a {
 .social_media {
   width: 30%;
   display: inline-block;
+}
+
+/* 48em = 768px */
+
+@media (min-width: 48em) {
+  .header li {
+    float: left;
+  }
+  .header li a {
+    padding: 20px 30px;
+  }
+  .header .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+  }
+  .header .menu-icon {
+    display: none;
+  }
+}
+
+@media (max-width: 1350px) {
+  .blog .details {
+    padding: 5em 10em;
+  }
+}
+
+@media (max-width: 950px) {
+  .blog .details {
+    padding: 5em 10em;
+  }
+
+  .contacting .contact_details,
+  .contacting .social_media {
+    text-align: center !important;
+  }
+
+  .contacting .social_media {
+    padding: 0.5em 0;
+  }
+
+  .contact_details,
+  .social_media {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .navbar,
+  .header_content h1 {
+    width: 100%;
+  }
+
+  .blog_list .blog_details span {
+    line-height: 2em;
+    padding: 0;
+    display: block;
+  }
+
+  .blog .details {
+    padding: 5em 3.5em;
+  }
+
+  .contacting {
+    padding-top: 3em;
+  }
+
+  .contacting .social_media {
+    padding: 1em 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .header {
+    height: 55vh;
+  }
 }
