@@ -204,3 +204,56 @@ a {
   line-height: 5em;
   padding: 1.5em;
 }
+
+/* footer */
+.footer {
+  background-color: #232228;
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+  height: 20vh;
+  width: 100%;
+  z-index: 3;
+  color: #f5f5f5;
+}
+
+.contacting {
+  /* border-top: 1px solid #f5f5f5; */
+  padding-top: 5em;
+  text-align: center;
+}
+
+.contacting .contact_details {
+  text-align: left;
+}
+
+.contacting .social_media {
+  text-align: right;
+}
+
+.contacting hr {
+  width: 60%;
+}
+
+.social_media i {
+  padding: 0 0.3em;
+}
+
+/* hovering colors for social media icons */
+.social_media a:hover:nth-child(1) {
+  color: #79ddff;
+}
+
+.social_media a:hover:nth-child(2),
+.social_media a:hover:nth-child(5) {
+  color: #003cff;
+}
+
+.social_media a:hover:nth-child(3),
+.social_media a:hover:nth-child(4) {
+  color: #ff0000;
+}
+
+.contact_details,
+.social_media {
+  width: 30%;
+  display: inline-block;
+}

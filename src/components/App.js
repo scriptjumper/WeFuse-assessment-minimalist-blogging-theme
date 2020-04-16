@@ -6,6 +6,7 @@ import './App.css'
 import Header from './Header/Header'
 import ArticleDetails from './ArticleDetails/ArticleDetails'
 import ArticleList from './ArticleList/ArticleList'
+import Footer from './Footer/Footer'
 
 class App extends React.Component {
   constructor() {
@@ -38,10 +39,12 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <Header></Header>
+        <Header />
 
         <Route exact path="/" render={() => <ArticleList articles={this.state.articles} handleArticleClicked={this.handleArticleClicked} />} />
         <Route exact path="/article/:slug" render={() => <ArticleDetails article={this.state.article} />} />
+
+        <Footer />
       </Router>
     )
   }
