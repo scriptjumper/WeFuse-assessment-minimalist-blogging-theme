@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import axios from 'axios'
 import './App.css'
 
+import API from '../api/APIUtils'
 import Header from './Header/Header'
 import ArticleDetails from './ArticleDetails/ArticleDetails'
 import ArticleList from './ArticleList/ArticleList'
@@ -14,34 +14,24 @@ class App extends React.Component {
 
     this.state = {
       articles: [],
-      article: {}
+      article: {},
+      loading: true
     }
 
     this.handleArticleClicked = this.handleArticleClicked.bind(this)
   }
 
   handleArticleClicked(slug) {
-    try {
-      axios.get(`${process.env.REACT_APP_API_URL}/blog/${slug}`).then((res) => {
-        let article = res.data.data[0]
-        this.setState({ article })
-      })
-    } catch (e) {
-      console.log(`Axios request failed: ${e}`)
-      this.setState({ article: {} })
-    }
+    this.setState({ loading: true })
+    API.getBlogArticle(slug).then((res) => {
+      this.setState({ article: res.data[0], loading: false })
+    })
   }
 
   componentDidMount() {
-    try {
-      axios.get(`${process.env.REACT_APP_API_URL}/blog/list`).then((res) => {
-        let articles = res.data.data
-        this.setState({ articles })
-      })
-    } catch (e) {
-      console.log(`Axios request failed: ${e}`)
-      this.setState({ articles: [] })
-    }
+    API.getBlogList().then((res) => {
+      this.setState({ articles: res.data, loading: false })
+    })
   }
 
   render() {
@@ -49,8 +39,12 @@ class App extends React.Component {
       <Router>
         <Header />
 
-        <Route exact path="/" render={() => <ArticleList articles={this.state.articles} handleArticleClicked={this.handleArticleClicked} />} />
-        <Route exact path="/article/:slug" render={() => <ArticleDetails article={this.state.article} />} />
+        <Route
+          exact
+          path="/"
+          render={() => <ArticleList articles={this.state.articles} handleArticleClicked={this.handleArticleClicked} loading={this.state.loading} />}
+        />
+        <Route exact path="/article/:slug" render={() => <ArticleDetails article={this.state.article} loading={this.state.loading} />} />
 
         <Footer />
       </Router>
