@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+import axios from 'axios'
 import './App.css'
 
 import Header from './Header/Header'
@@ -18,48 +19,20 @@ class App extends React.Component {
     this.handleArticleClicked = this.handleArticleClicked.bind(this)
   }
 
-  componentDidMount() {
-    let articles = [
-      {
-        category: 'Tech',
-        title: 'article 1',
-        date: '2020/24/03',
-        author: 'admin',
-        pageData:
-          '<h1>Article 1</h1><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia provident nesciunt pariatur, ipsa repellendus est numquam maiores reiciendis deserunt doloremque. Similique optio tempora dolorem alias sed consequatur dolores ab nemo!</p>'
-      },
-      {
-        category: 'Accounting',
-        title: 'article 2',
-        date: '2015/12/11',
-        author: 'unknown',
-        pageData:
-          '<h1>Article 2</h1><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia provident nesciunt pariatur, ipsa repellendus est numquam maiores reiciendis deserunt doloremque. Similique optio tempora dolorem alias sed consequatur dolores ab nemo!</p>'
-      },
-      {
-        category: 'Farming',
-        title: 'article 3',
-        date: '2015/12/11',
-        author: 'unknown',
-        pageData:
-          '<h1>Article 3</h1><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia provident nesciunt pariatur, ipsa repellendus est numquam maiores reiciendis deserunt doloremque. Similique optio tempora dolorem alias sed consequatur dolores ab nemo!</p>'
-      }
-    ]
-    this.setState({ articles })
+  handleArticleClicked(slug) {
+    //
   }
 
-  handleArticleClicked(slug) {
-    let articles = this.state.articles,
-      articleObj = {}
-
-    for (let i = 0; i < articles.length; i++) {
-      if (articles[i].title === slug) {
-        articleObj = articles[i]
-        break
-      }
+  componentDidMount() {
+    try {
+      axios.get(`${process.env.REACT_APP_API_URL}/blog/list`).then((res) => {
+        let articles = res.data.data
+        this.setState({ articles })
+      })
+    } catch (e) {
+      console.log(`Axios request failed: ${e}`)
+      this.setState({ articles: [] })
     }
-
-    this.setState({ article: articleObj })
   }
 
   render() {
