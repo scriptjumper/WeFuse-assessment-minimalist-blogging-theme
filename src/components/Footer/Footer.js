@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 
 function Footer() {
   return (
-    <footer class="footer">
-      <div class="contacting">
+    <footer className="footer">
+      <div className="contacting">
         <hr />
-        <div class="contact_details">
+        <div className="contact_details">
           <span>
             Call Us: <em>(1)118 234 768</em>
           </span>{' '}
@@ -17,21 +17,21 @@ function Footer() {
           </span>
         </div>
 
-        <div class="social_media">
+        <div className="social_media">
           <a href="#">
-            <i class="fab fa-twitter"></i>
+            <i className="fab fa-twitter"></i>
           </a>
           <a href="#">
-            <i class="fab fa-facebook-f"></i>
+            <i className="fab fa-facebook-f"></i>
           </a>
           <a href="#">
-            <i class="fab fa-google-plus-g"></i>
+            <i className="fab fa-google-plus-g"></i>
           </a>
           <a href="#">
-            <i class="fab fa-youtube"></i>
+            <i className="fab fa-youtube"></i>
           </a>
           <a href="#">
-            <i class="fab fa-linkedin-in"></i>
+            <i className="fab fa-linkedin-in"></i>
           </a>
         </div>
       </div>
