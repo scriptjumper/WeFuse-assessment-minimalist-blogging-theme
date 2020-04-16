@@ -32,7 +32,12 @@ const ArticleList = (props) => {
     )
   })
 
-  return <div className="blog_list">{articles}</div>
+  return (
+    <div className="blog_list">
+      {props.loading && <p className="loading">Loading ...</p>}
+      {articles}
+    </div>
+  )
 }
 
 export default ArticleList
