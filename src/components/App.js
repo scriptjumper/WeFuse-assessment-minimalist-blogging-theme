@@ -15,29 +15,43 @@ class App extends React.Component {
     this.state = {
       articles: [],
       article: {},
+      homepage: {},
       loading: true
     }
 
     this.handleArticleClicked = this.handleArticleClicked.bind(this)
+    this.handleHomepageClick = this.handleHomepageClick.bind(this)
+    this.fetchBlogArticles = this.fetchBlogArticles.bind(this)
   }
 
   handleArticleClicked(slug) {
     this.setState({ loading: true })
     API.getBlogArticle(slug).then((res) => {
-      this.setState({ article: res.data[0], loading: false })
+      this.setState({ article: res.data[0], homepage: res.data[0], loading: false })
+    })
+  }
+
+  handleHomepageClick() {
+    API.getHomepage().then((res) => {
+      this.setState({ homepage: res })
+    })
+  }
+
+  fetchBlogArticles() {
+    API.getBlogList().then((res) => {
+      this.handleHomepageClick()
+      this.setState({ articles: res.data, loading: false })
     })
   }
 
   componentDidMount() {
-    API.getBlogList().then((res) => {
-      this.setState({ articles: res.data, loading: false })
-    })
+    this.fetchBlogArticles()
   }
 
   render() {
     return (
       <Router>
-        <Header />
+        <Header fetchBlogArticles={this.fetchBlogArticles} homepage={this.state.homepage} />
 
         <Route
           exact
