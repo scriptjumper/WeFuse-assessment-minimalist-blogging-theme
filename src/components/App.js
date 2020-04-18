@@ -38,6 +38,7 @@ class App extends React.Component {
   }
 
   fetchBlogArticles() {
+    this.setState({ homepage: {} })
     API.getBlogList().then((res) => {
       this.handleHomepageClick()
       this.setState({ articles: res.data, loading: false })
