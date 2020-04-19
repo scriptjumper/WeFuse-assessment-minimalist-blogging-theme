@@ -27,6 +27,7 @@ class App extends React.Component {
   handleArticleClicked(slug) {
     this.setState({ loading: true })
     API.getBlogArticle(slug).then((res) => {
+      sessionStorage.setItem('article', JSON.stringify(res.data[0]))
       this.setState({ article: res.data[0], homepage: res.data[0], loading: false })
     })
   }
@@ -40,13 +41,19 @@ class App extends React.Component {
   fetchBlogArticles() {
     this.setState({ homepage: {} })
     API.getBlogList().then((res) => {
+      sessionStorage.removeItem('article')
       this.handleHomepageClick()
       this.setState({ articles: res.data, loading: false })
     })
   }
 
   componentDidMount() {
-    this.fetchBlogArticles()
+    let articleInSession = JSON.parse(sessionStorage.getItem('article'))
+    if (articleInSession) {
+      this.setState({ article: articleInSession, homepage: articleInSession, loading: false })
+    } else {
+      this.fetchBlogArticles()
+    }
   }
 
   render() {
