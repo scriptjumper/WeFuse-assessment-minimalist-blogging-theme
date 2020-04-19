@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Parallax } from 'react-parallax'
+import logo from './logo192.png'
 
 const Header = (props) => {
   let page = props.homepage,
@@ -30,7 +31,7 @@ const Header = (props) => {
               onClick={() => {
                 props.fetchBlogArticles()
               }}>
-              <img src="./logo192.png" alt="logo" className="logo" height="30" />
+              <img src={logo} alt="logo" className="logo" height="30" />
             </Link>
             <input className="menu-btn" type="checkbox" id="menu-btn" />
             <label className="menu-icon" htmlFor="menu-btn">
